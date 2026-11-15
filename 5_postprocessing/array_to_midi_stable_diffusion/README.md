@@ -12,13 +12,3 @@ This notebook adapts the array-to-MIDI decoding workflow to image-like outputs p
 4. Derive note runs
 5. Convert grid coordinates
 6. Write/render MIDI
-
-## Research context
-
-Downstream of inference: bridges probabilistic or categorical pitch grids to explicit note timing, MIDI, and audible renderings.
-
-## Source and reproducibility
-
-- Python export: `array_to_midi_stable_diffusion.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

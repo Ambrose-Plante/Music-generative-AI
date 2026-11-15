@@ -12,13 +12,3 @@ This notebook is an alternate timing-oriented architecture that relies more heav
 4. Categorical output
 5. Timing/note-count + adversarial evaluation
 6. Train
-
-## Research context
-
-Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
-
-## Source and reproducibility
-
-- Python export: `timing_net_B.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

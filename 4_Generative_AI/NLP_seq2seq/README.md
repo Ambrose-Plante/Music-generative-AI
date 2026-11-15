@@ -12,13 +12,3 @@ This notebook implements a Transformer-based supervised sequence model for the l
 4. Project to token logits
 5. Cross-entropy with label smoothing
 6. Accuracy evaluation
-
-## Research context
-
-Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
-
-## Source and reproducibility
-
-- Python export: `NLP_seq2seq.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

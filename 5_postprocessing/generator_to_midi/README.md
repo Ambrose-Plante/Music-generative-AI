@@ -12,13 +12,3 @@ This notebook takes a trained generator checkpoint and turns a single or small s
 4. Threshold/ argmax
 5. Form note events
 6. Write/synthesize MIDI
-
-## Research context
-
-Downstream of inference: bridges probabilistic or categorical pitch grids to explicit note timing, MIDI, and audible renderings.
-
-## Source and reproducibility
-
-- Python export: `generator_to_midi.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

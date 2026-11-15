@@ -12,13 +12,3 @@ This preprocessing notebook builds a corpus whose pitch vocabulary is deliberate
 4. Quantize chord/vocal events
 5. Encode metadata
 6. Save examples
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `midi_process_Cmajor_strict.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

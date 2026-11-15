@@ -12,13 +12,3 @@ This notebook combines dataset quality control with empirical statistical modeli
 4. Count outcomes
 5. Normalize to probabilities
 6. Serialize transition/duration dictionaries
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `check_and_analyze_data.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

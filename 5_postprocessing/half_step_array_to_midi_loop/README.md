@@ -12,13 +12,3 @@ This notebook is the batch renderer for models trained on the lower-resolution h
 4. Scale half-step indices to seconds
 5. Write tracks
 6. Synthesize/mix
-
-## Research context
-
-Downstream of inference: bridges probabilistic or categorical pitch grids to explicit note timing, MIDI, and audible renderings.
-
-## Source and reproducibility
-
-- Python export: `half_step_array_to_midi_loop.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

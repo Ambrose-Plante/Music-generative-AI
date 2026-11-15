@@ -12,13 +12,3 @@ This notebook adds song-section identity to the chord-conditioned GAN. A five-wa
 4. Generate vocals
 5. Discriminate + predict section
 6. Combine BCE and section CE
-
-## Research context
-
-Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
-
-## Source and reproducibility
-
-- Python export: `midi_conditional_DCGAN_network_pytorch_with_section.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

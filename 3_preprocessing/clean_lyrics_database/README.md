@@ -11,13 +11,3 @@ This notebook cleans a lyrics corpus so that downstream pronunciation and syllab
 3. Dictionary membership test
 4. Discard unsuitable tokens/lines
 5. Serialize cleaned lyrics
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `clean_lyrics_database.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

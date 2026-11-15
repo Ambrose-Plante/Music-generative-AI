@@ -12,13 +12,3 @@ This notebook produces the half-step strict-C-major dataset directly from MIDI f
 4. Scale correction
 5. Half-step quantization
 6. Save aligned arrays
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `midi_process_half_step_midi_only_Cmajor_strict.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

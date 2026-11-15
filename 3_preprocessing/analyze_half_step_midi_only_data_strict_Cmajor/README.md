@@ -12,13 +12,3 @@ This notebook performs quality assurance on the half-step, MIDI-only, strict-C-m
 4. Regenerate MIDI/metronome
 5. Listen/visualize
 6. Flag anomalies
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `analyze_half_step_midi_only_data_strict_Cmajor.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

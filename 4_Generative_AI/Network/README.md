@@ -12,13 +12,3 @@ This notebook trains a supervised multimodal neural network to predict a structu
 4. Transformer encoding
 5. Structured output projection
 6. Supervised loss/accuracy
-
-## Research context
-
-Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
-
-## Source and reproducibility
-
-- Python export: `Network.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

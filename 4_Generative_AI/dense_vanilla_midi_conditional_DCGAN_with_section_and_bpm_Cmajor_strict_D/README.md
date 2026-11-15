@@ -12,13 +12,3 @@ This is a later revision of the same strict-C-major, section-and BPM-conditioned
 4. Discriminator/auxiliary heads
 5. Combined losses
 6. Experimental comparison
-
-## Research context
-
-Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
-
-## Source and reproducibility
-
-- Python export: `dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_D.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

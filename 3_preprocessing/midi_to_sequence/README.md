@@ -12,13 +12,3 @@ This notebook converts musical and linguistic inputs into a sequence-oriented re
 4. Encode BPM
 5. Flatten/rearrange tensors
 6. Save sequence representation
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `midi_to_sequence.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

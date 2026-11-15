@@ -12,13 +12,3 @@ This notebook converts raw song annotations, chord MIDI, tempo metadata, and voc
 4. Quantize time
 5. Encode BPM/section
 6. Save aligned NPZ examples
-
-## Research context
-
-Upstream of model training: normalizes key, time grid, section, tempo, lyric and vocal representations and validates round-trip conversions.
-
-## Source and reproducibility
-
-- Python export: `Copy of midi_process_full.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.

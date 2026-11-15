@@ -12,13 +12,3 @@ This notebook consolidates the chord-generation logic into a more reusable workf
 4. Apply voice-leading proximity rule
 5. Construct notes
 6. Export
-
-## Research context
-
-Upstream data acquisition and augmentation: the PDF-to-MIDI family develops through template caching, scale handling, note/rest inference and section-specific export.
-
-## Source and reproducibility
-
-- Python export: `chord_generator_single_function.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.
