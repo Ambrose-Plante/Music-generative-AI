@@ -13,13 +13,3 @@ This is the most production-oriented version of the archive's heuristic PDF-to-M
 5. Map requested sections
 6. Process declared chord progression
 7. Export aligned MIDI files
-
-## Research context
-
-Upstream data acquisition and augmentation: the PDF-to-MIDI family develops through template caching, scale handling, note/rest inference and section-specific export.
-
-## Source and reproducibility
-
-- Python export: `true_size_efficient_pdf_to_midi.py` (available in the prepared import package; upload to this project folder pending)
-
-This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.
