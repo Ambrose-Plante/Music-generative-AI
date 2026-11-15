@@ -175,20 +175,3 @@ These services **are not included** in this directory. Without the API, the edit
 
 Other package scripts: `npm run build` creates a production bundle, and `npm test` invokes the scaffold Jest test runner. The existing `App.test.js` still asserts the old “learn react” link and has not been updated to test this editor.
 
-Because the dependency stack is dated, modern Node.js installations may require compatibility updates. The app was reviewed **statically** for this documentation; its build and full browser/backend workflow have not been executed or verified.
-
-## Known limitations
-
-- API and audio addresses are hardcoded to localhost; a separate backend and static audio server must be configured.
-- The editor expects a valid non-empty `notes` list with sequential IDs, and has limited input/schema validation.
-- Drag/drop can encounter boundary-index problems when moving syllable labels near the ends of a sequence.
-- The pitch display and audio-position cursor are approximations rather than a fully calibrated notation/timeline view.
-- `last_syllable.js` contains inconsistent identifiers and is not used by the main editor.
-- The included automated test is leftover Create React App boilerplate.
-- The interface does not perform automatic audio transcription, phoneme recognition, music generation, or vocal synthesis.
-
-Potential improvements include configurable backend URLs, stronger drag/drop invariants and tests, clearer playback synchronization, timeline zoom, error/empty states, and an integrated annotation/export endpoint.
-
----
-
-This README describes the **currently uploaded code** in `1_Data_Generation/react_app`, distinguishing implemented frontend behavior from the companion Python notebook and external services.
