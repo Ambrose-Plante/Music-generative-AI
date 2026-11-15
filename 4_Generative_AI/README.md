@@ -7,8 +7,8 @@ Model-development lineage: baseline MIDI DCGAN → chord conditioning → sectio
 ## Projects
 
 - [`AutoVox_GAN`](AutoVox_GAN/) — This notebook implements a multimodal conditional GAN intended to generate vocal-output arrays from symbolic musical context.
-- [`Copy of dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_A`](Copy_of_dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_A/) — This is a dense-block conditional GAN for generating strict-C-major vocal piano rolls from chord context plus song-section and tempo information.
-- [`Copy of dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C`](Copy_of_dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C/) — This notebook is another revision of the dense conditional GAN family rather than an unrelated algorithm.
+- [`dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_A`](dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_A/) — This is a dense-block conditional GAN for generating strict-C-major vocal piano rolls from chord context plus song-section and tempo information.
+- [`dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C`](dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C/) — This notebook is another revision of the dense conditional GAN family rather than an unrelated algorithm.
 - [`Crazy_idea_Cmajor_strict_A`](Crazy_idea_Cmajor_strict_A/) — This notebook extends the strict-C-major dense conditional GAN with an explicit objective related to how many distinct note events the generated sequence contains.
 - [`Crazy_idea_Cmajor_strict_B`](Crazy_idea_Cmajor_strict_B/) — This experiment carries the preceding conditional-GAN idea further by adding Transformer-based sequence processing and positional information.
 - [`Crazy_idea_Cmajor_strict_C`](Crazy_idea_Cmajor_strict_C/) — This notebook is a further variant of the Transformer/dense conditional-GAN experiments for strict-C-major vocal generation.

@@ -1,4 +1,4 @@
-# Copy of dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C
+# dense_vanilla_midi_conditional_DCGAN_with_section_and_bpm_Cmajor_strict_C
 
 ## Overview
 

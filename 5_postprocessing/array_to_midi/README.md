@@ -1,4 +1,4 @@
-# Copy of array_to_midi
+# array_to_midi
 
 ## Overview
 

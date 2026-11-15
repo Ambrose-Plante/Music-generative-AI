@@ -12,7 +12,7 @@ Upstream of model training: normalizes key, time grid, section, tempo, lyric and
 - [`check_and_analyze_midi_only_data_strict_Cmajor`](check_and_analyze_midi_only_data_strict_Cmajor/) — This notebook applies the MIDI-only validation workflow specifically to the strict-C-major normalized corpus.
 - [`check_and_analyze_midi_only_data`](check_and_analyze_midi_only_data/) — This notebook validates the version of the dataset built directly from MIDI rather than JSON-style vocal annotation.
 - [`clean_lyrics_database`](clean_lyrics_database/) — This notebook cleans a lyrics corpus so that downstream pronunciation and syllable algorithms receive words they can process.
-- [`Copy of midi_process_full`](Copy_of_midi_process_full/) — This notebook converts raw song annotations, chord MIDI, tempo metadata, and vocal-note information into fixed-size arrays for model training.
+- [`midi_process_full_2`](midi_process_full_2/) — This notebook converts raw song annotations, chord MIDI, tempo metadata, and vocal-note information into fixed-size arrays for model training.
 - [`export_vocals_midi`](export_vocals_midi/) — This notebook exports a standardized collection of vocal MIDI files from the project's checked source data.
 - [`midi_process_Cmajor_strict`](midi_process_Cmajor_strict/) — This preprocessing notebook builds a corpus whose pitch vocabulary is deliberately restricted to C-major-compatible states.
 - [`midi_process_full`](midi_process_full/) — This notebook is the principal full-resolution preprocessing path for the symbolic-vocal project.
