@@ -8,7 +8,6 @@ Upstream data acquisition and augmentation: the PDF-to-MIDI family develops thro
 
 - [`chord_generator_single_function`](chord_generator_single_function/) — This notebook consolidates the chord-generation logic into a more reusable workflow.
 - [`chord_generator`](chord_generator/) — This notebook generates playable chord voicings from symbolic chord progressions while attempting to keep neighboring voices smooth.
-- [`Copy of mix_vocals_midi`](Copy_of_mix_vocals_midi/) — This notebook creates synthetic vocal performances by separating rhythmic placement from pitch content.
 - [`data_augment_midi_generator`](data_augment_midi_generator/) — This notebook generates or augments vocal MIDI using empirical distributions learned from the real corpus.
 - [`efficient_pdf_to_midi`](efficient_pdf_to_midi/) — This notebook implements heuristic optical music recognition while reducing repeated work found in the earlier PDF pipeline.
 - [`mix_vocals_by_bar`](mix_vocals_by_bar/) — This notebook creates synthetic vocal MIDI by recombining fixed-length bars from different performances.
