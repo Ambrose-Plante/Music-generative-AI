@@ -1,4 +1,3 @@
-# checked
 # data_augment_midi_generator
 
 ## Overview
