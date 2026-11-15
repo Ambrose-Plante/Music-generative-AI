@@ -1,8 +1,8 @@
-# true_size_efficient_pdf_to_midi
+# pdf_to_midi
 
 ## Overview
 
-This is the most production-oriented version of the archive's heuristic PDF-to-MIDI system. It operates with a coordinate scheme tied more directly to the chosen page-rendering size, uses an expanded symbol-template collection, and includes section-marker/rest handling beyond the earlier recognizers. Template detections are translated into staff, pitch, accidental, duration, tie/dot, and measure information, with heuristics that can correct inconsistent measure durations. Song metadata, BPM, chord progressions, and section information can also be obtained from external tabular data so recognized score segments are associated with the project's training-section structure. The notebook can export separate vocal MIDI and matching chord MIDI for selected sections, turning OMR into an upstream dataset-ingestion tool rather than merely a one-off score converter.
+This is a a novel sheet music-to-MIDI conversion algorithm conceived of and built by me. It is based on scanning a sheet music pdf using a symbol-template collection including staff, notes, rests, pitch, accidental, duration, tie/dot, and measure information. The detected symbols are processed through an music-logic algorithm based on my own music theory expertise, and any inconsistenties are automatically detected, and in some cases automatically corrected. Song metadata, BPM, chord progressions, and section information are drawn from external tabular data so recognized score segments are associated with the project's training-section structure. The notebook exports separate vocal MIDI and aligned chord MIDI for selected sections, turning OMR into an upstream dataset-ingestion tool.
 
 ## Algorithmic workflow
 
@@ -11,5 +11,5 @@ This is the most production-oriented version of the archive's heuristic PDF-to-M
 3. Infer notes/rests
 4. Correct measure timing
 5. Map requested sections
-6. Process declared chord progression
+6. Process and package chord progression
 7. Export aligned MIDI files
