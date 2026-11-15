@@ -1,47 +1,42 @@
 # Maximus | Music Generative AI
 
-Research code for **Maximus**, a research platform for generating symbolic vocal melodies from harmony, tempo, song structure, and lyrical context. This repository contains individual experiments and their algorithm descriptions, together with some unrelated computational research and utilities.
+Research code for **Maximus**, a platform for generating symbolic vocal melodies from harmony, tempo, song structure, and lyrical context. Experiments are organized by the stages of the symbolic-music pipeline.
 
 ## Research pipeline
 
 ```text
-Score PDFs → heuristic optical music recognition → MIDI
-                                                ↘
-MIDI + chords + BPM + song sections + lyrics
-                      ↓
-     normalization and feature encoding
-                      ↓
-  DCGAN / conditional GAN / Transformer / diffusion
-                      ↓
-       vocal pitch/probability arrays
-                      ↓
-       note-event decoding → MIDI → audio QC
+Score PDFs / chord and vocal MIDI
+               ↓
+      1. Data generation
+               ↓
+      2. Data augmentation
+               ↓
+      3. Preprocessing
+               ↓
+      4. Generative AI models
+               ↓
+      5. Postprocessing
+               ↓
+      6. Post-generation utilities
 ```
 
-**Research trajectory:** the models evolve from an unconditional MIDI DCGAN to chord conditioning, section/BPM control, dense-block variants with auxiliary losses, Transformer-based context, explicit timing objectives and diffusion/image-grid experiments. The separate optical-music-recognition pipeline uses score rasterization, OpenCV symbol-template matching, and geometric musical reconstruction.
+The model experiments span MIDI DCGANs, chord conditioning, section/BPM control, dense-block variants, Transformer-based context, timing objectives, and diffusion/image-grid representations. The optical-music-recognition work uses score rasterization, OpenCV template matching, and musical-structure reconstruction.
 
 ## Browse the project
 
-| Directory | Contents | Research notebooks |
+| Directory | Contents | Project folders |
 | --- | --- | ---: |
-| [`Generative_AI/`](Generative_AI/) | GANs, conditional GANs, diffusion, Transformer, supervised sequence, and architectural experiments for generating symbolic vocal melodies. | 37 |
-| [`preprocessing/`](preprocessing/) | Converting raw MIDI, score-derived MIDI, lyrics, phonetic annotations, and song metadata into aligned, normalized model inputs. | 17 |
-| [`Data_Generation/`](Data_Generation/) | Optical music recognition from score PDFs, rule-based chord voicing, and augmentation of symbolic-MIDI data. | 12 |
-| [`postprocessing/`](postprocessing/) | Decoding model output arrays, generating MIDI note events, and synthesizing or mixing audio for qualitative evaluation. | 7 |
-| [`spatial_transcriptomics/`](spatial_transcriptomics/) | Exploratory neural representation learning relating histology imagery to spatial gene expression. | 2 |
-| [`Utilities/`](Utilities/) | Independent work on transcription, clinical ETL, language-learning decks, data handling, and smaller experiments. | 18 |
+| [`1_Data_Generation/`](1_Data_Generation/) | Score PDF-to-MIDI conversion and chord-aware vocal-data construction. | 2 |
+| [`2_Data_Augmentation/`](2_Data_Augmentation/) | Markov-chain MIDI augmentation, recombination of vocal bars, and MIDI pitch/timing mixing. | 3 |
+| [`3_preprocessing/`](3_preprocessing/) | Alignment, normalization, quality checks, and encoding of symbolic musical and lyric inputs. | 17 |
+| [`4_Generative_AI/`](4_Generative_AI/) | Conditional GANs, diffusion, Transformer, and supervised symbolic-melody experiments. | 37 |
+| [`5_postprocessing/`](5_postprocessing/) | Decoding generated model outputs into note events, MIDI, and audio. | 7 |
+| [`6_post_generation_utilities/`](6_post_generation_utilities/) | Post-generation chord-voicing utility experiment. | 1 |
 
-Each project folder contains a README documenting its algorithmic purpose and processing stages. The original names, including revision letters and `Copy of` experiments, are retained to preserve experimental lineage.
+Each project folder contains its own README describing its intended algorithm. Research snapshots may require original datasets, model checkpoints, sound fonts, and historical dependencies; they are not all turnkey applications.
 
-## Source status
+## Source and provenance
 
-**All 93 research Python exports are organized into their project folders, alongside their READMEs.** This includes the two original project scripts (`AutoVox_GAN` and `pianoRoll_to_midi`) and two empty historical placeholders (`Network_TPU` and `Untitled3`). Files were relocated from the temporary upload folder without altering their contents.
+The project's experimental scripts were organized from historical Colab notebook exports, with technical documentation based on the earlier *Analytical Report: Concepts and Algorithms in Colab Notebooks.zip*. Renaming and moving the folders does not alter the individual source files.
 
-- **Credential hygiene.** The historical analytical report identified hard-coded API keys in the original `Italian_anki` and `Mandarin_anki_TTS` notebooks. The user subsequently reported removing those keys before uploading the Python exports. These uploaded scripts have **not** been independently security-audited; revoke/rotate any previously exposed credentials and keep keys out of source control.
-- **Research snapshots, not turnkey packages.** The report documents code statically. Original datasets, Google Drive paths, historical dependencies, model checkpoints, and sound fonts may be required.
-- **Reference material.** The annotated Transformer notebook is educational/reference code; check its original license and attribution.
-- The earlier Maximus project description also referenced a Django lyrics-to-notes interface; that web app is not among the 93 notebooks analyzed here.
-
-## Documentation provenance
-
-Descriptions are grounded in the supplied 36-page *Analytical Report: Concepts and Algorithms in Colab Notebooks.zip*, covering 93 original Colab notebooks. This repository already contained the two completed examples `AutoVox_GAN` and `pianoRoll_to_midi`; their code and individual README files have been preserved.
+The independent projects previously organized under `Utilities/` and `spatial_transcriptomics/` now live in separate repositories: [For_Fun](https://github.com/Ambrose-Plante/For_Fun) and [spatial_transcriptomics](https://github.com/Ambrose-Plante/spatial_transcriptomics).
