@@ -32,11 +32,3 @@ The model experiments span MIDI DCGANs, chord conditioning, section/BPM control,
 | [`4_Generative_AI/`](4_Generative_AI/) | Conditional GANs, diffusion, Transformer, and supervised symbolic-melody experiments. | 37 |
 | [`5_postprocessing/`](5_postprocessing/) | Decoding generated model outputs into note events, MIDI, and audio. | 7 |
 | [`6_post_generation_utilities/`](6_post_generation_utilities/) | Post-generation chord-voicing utility experiment. | 1 |
-
-Each project folder contains its own README describing its intended algorithm. Research snapshots may require original datasets, model checkpoints, sound fonts, and historical dependencies; they are not all turnkey applications.
-
-## Source and provenance
-
-The project's experimental scripts were organized from historical Colab notebook exports, with technical documentation based on the earlier *Analytical Report: Concepts and Algorithms in Colab Notebooks.zip*. Renaming and moving the folders does not alter the individual source files.
-
-The independent projects previously organized under `Utilities/` and `spatial_transcriptomics/` now live in separate repositories: [For_Fun](https://github.com/Ambrose-Plante/For_Fun) and [spatial_transcriptomics](https://github.com/Ambrose-Plante/spatial_transcriptomics).
