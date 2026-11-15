@@ -10,10 +10,10 @@ Independent explorations are retained for completeness, rather than presented as
 - [`Cost_of_care_merged`](Cost_of_care_merged/) — This is a clinical-data analysis notebook centered on cost-of-care survey responses rather than machine learning.
 - [`double_word_game`](double_word_game/) — This notebook solves a small dictionary word puzzle by searching for words containing exactly one adjacent duplicated letter of a candidate character.
 - [`interpreter_obgyn_outcomes`](interpreter_obgyn_outcomes/) — This notebook constructs a harmonized obstetric cohort from multiple clinical data sources related to interpreter use and delivery outcomes.
-- [`Italian_anki`](Italian_anki/) — This notebook automates creation of an Italian language-learning Anki deck from spreadsheet vocabulary. **(source withheld pending credential removal)**
+- [`Italian_anki`](Italian_anki/) — This notebook automates creation of an Italian language-learning Anki deck from spreadsheet vocabulary. **(earlier archive included credentials; review security note)**
 - [`lecture_transcript`](lecture_transcript/) — This notebook automates transcription of lecture-video files.
 - [`mandarin_anki_Jocelyn`](mandarin_anki_Jocelyn/) — This notebook creates Mandarin Anki cards using an existing human-recorded audio track rather than text-to-speech.
-- [`Mandarin_anki_TTS`](Mandarin_anki_TTS/) — This notebook performs the same general flashcard automation for Mandarin vocabulary, with Google Cloud text-to-speech producing Mandarin pronunciation audio. **(source withheld pending credential removal)**
+- [`Mandarin_anki_TTS`](Mandarin_anki_TTS/) — This notebook performs the same general flashcard automation for Mandarin vocabulary, with Google Cloud text-to-speech producing Mandarin pronunciation audio. **(earlier archive included credentials; review security note)**
 - [`OSA_exploration`](OSA_exploration/) — This is an exploratory notebook for polysomnography or related physiological signals stored in EDF format.
 - [`The Annotated _Attention is All You Need_`](The_Annotated__Attention_is_All_You_Need/) — This is an educational/reference implementation of the original encoder-decoder Transformer rather than a project-specific music model.
 - [`Untitled0`](Untitled0/) — This notebook contains only a package-installation command for the pedalboard audio-processing library.

@@ -35,9 +35,9 @@ Each project folder contains a README documenting its algorithmic purpose and pr
 
 ## Source status
 
-**Documentation is published first; the remaining Python exports are staged in a separate import package.** The GitHub connector does not accept an uploaded ZIP as a filesystem source for bulk commits. Two empty historical placeholders (`Network_TPU` and `Untitled3`) are included; other archive scripts need to be transferred from the prepared import package. The two existing project scripts (`AutoVox_GAN` and `pianoRoll_to_midi`) remain in place.
+**All 93 research Python exports are organized into their project folders, alongside their READMEs.** This includes the two original project scripts (`AutoVox_GAN` and `pianoRoll_to_midi`) and two empty historical placeholders (`Network_TPU` and `Untitled3`). Files were relocated from the temporary upload folder without altering their contents.
 
-- **Do not publish embedded secrets.** Source files `Italian_anki.py` and `Mandarin_anki_TTS.py` are intentionally excluded because the analytical report identified hard-coded credentials. Rotate/revoke and sanitize first.
+- **Credential hygiene.** The historical analytical report identified hard-coded API keys in the original `Italian_anki` and `Mandarin_anki_TTS` notebooks. The user subsequently reported removing those keys before uploading the Python exports. These uploaded scripts have **not** been independently security-audited; revoke/rotate any previously exposed credentials and keep keys out of source control.
 - **Research snapshots, not turnkey packages.** The report documents code statically. Original datasets, Google Drive paths, historical dependencies, model checkpoints, and sound fonts may be required.
 - **Reference material.** The annotated Transformer notebook is educational/reference code; check its original license and attribution.
 - The earlier Maximus project description also referenced a Django lyrics-to-notes interface; that web app is not among the 93 notebooks analyzed here.
