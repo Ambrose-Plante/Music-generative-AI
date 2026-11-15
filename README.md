@@ -26,8 +26,8 @@ The model experiments span MIDI DCGANs, chord conditioning, section/BPM control,
 
 | Directory | Contents | Project folders |
 | --- | --- | ---: |
-| [`1_Data_Generation/`](1_Data_Generation/) | Score PDF-to-MIDI conversion and chord-aware vocal-data construction. | 2 |
-| [`2_Data_Augmentation/`](2_Data_Augmentation/) | Markov-chain MIDI augmentation, recombination of vocal bars, and MIDI pitch/timing mixing. | 3 |
+| [`1_Data_Generation/`](1_Data_Generation/) | Score PDF-to-MIDI conversion. | 1 |
+| [`2_Data_Augmentation/`](2_Data_Augmentation/) | Markov-chain MIDI augmentation, vocal-bar recombination with chord context, and MIDI pitch/timing mixing. | 4 |
 | [`3_preprocessing/`](3_preprocessing/) | Alignment, normalization, quality checks, and encoding of symbolic musical and lyric inputs. | 17 |
 | [`4_Generative_AI/`](4_Generative_AI/) | Conditional GANs, diffusion, Transformer, and supervised symbolic-melody experiments. | 37 |
 | [`5_postprocessing/`](5_postprocessing/) | Decoding generated model outputs into note events, MIDI, and audio. | 7 |
