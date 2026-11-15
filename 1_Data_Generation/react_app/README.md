@@ -1,70 +1,194 @@
-# Getting Started with Create React App
+# Vocal MIDI–Syllable Alignment Editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based, interactive editor for **aligning phonetic lyric syllables with vocal MIDI notes**. Built as part of the Maximus / Music Generative AI research workflow, this tool visualizes the timing and pitch of a vocal performance, allows manual correction of syllable-to-note assignments, plays a corresponding vocal recording, and sends annotated note data back to a local service.
 
-## Available Scripts
+**Scope:** This is a human-in-the-loop **dataset annotation interface**, not a standalone MIDI generator or vocal synthesizer. The React frontend is included; the API and WAV-file server on which it depends are not.
 
-In the project directory, you can run:
+## Motivation and workflow
 
-### `npm start`
+A symbolic-vocal model can use music and language jointly only when vocal note events and their corresponding phonetic syllables are aligned. A MIDI track supplies onset, duration, and pitch, while phonetic lyric data supplies the sounds associated with those note events. Incorrect initial matches can be corrected by an annotator.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The intended workflow is:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Convert vocal MIDI and phonetic lyric material into an indexed list of note/syllable records (the accompanying Python notebook demonstrates this preparation).
+2. Load one song section into the editor using artist, song, BPM, and stanza URL parameters.
+3. Inspect a **time-versus-pitch** arrangement of notes, each labeled with its current phonetic syllable.
+4. Move labels among note positions, or mark an unassigned note with a placeholder.
+5. Review the sequence against a playable vocal recording with a visible playback-position indicator.
+6. Submit the edited annotations for downstream processing.
 
-### `npm test`
+## User-facing functionality
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Note visualization
 
-### `npm run build`
+`src/components/midi_note.js` renders every note as a blue, rounded horizontal bar containing its phonetic label. The bars are positioned using their note-event fields:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Start time:** the left offset is `start * 5` pixels.
+- **Duration:** the bar width is `duration * 5` pixels.
+- **Pitch:** the bottom offset is calculated from a minimum/maximum pitch scan (`src/lib/min_max.js`) and `src/lib/scalePitch.js`.
+- **Note ID:** used as both the React item key and an index in editing operations, so IDs should be sequential and zero-based.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This is a simplified pitch/timeline diagram, not traditional staff notation. The current pitch helper divides the offset above the lowest pitch by `max` rather than by the complete pitch range; its vertical scaling should be treated as experimental.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Manual syllable editing
 
-### `npm run eject`
+Two interactions are implemented:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- **Shift-click an empty note:** toggle its `syllable` field between the empty string `""` and the placeholder `"-"`. Occupied phonetic labels are not overwritten by Shift-click.
+- **Drag one labeled note onto another note:** attempt to shift a sequence of syllable fields along the note list. The forward/backward branches guard against some overwrites and clear vacated slots. This shifts **labels**, not pitches, note starts, or durations.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The drag-and-drop algorithm works with array indices and makes assumptions about note ordering and available blank positions. Edge cases and out-of-range conditions are not comprehensively validated.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Audio playback and synchronization
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The editor uses the browser's native `Audio` object and a separate `AudioControls.jsx` play/pause button. The **spacebar** also toggles playback. A red vertical position marker advances according to the audio playback time and a tempo-dependent note-grid conversion. Its position is polled approximately every 10 ms.
 
-## Learn More
+Audio URLs follow this pattern:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`http://127.0.0.1:8887/<artist_name>_<song_name>/<section_file>.wav`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Stanza parameter | Expected audio filename |
+| --- | --- |
+| `verse1` | `verse1_vocals.wav` |
+| `prechorus` | `prechorus_vocals.wav` |
+| `chorus` | `chorus_vocals.wav` |
+| `post_chorus` | `post_vocals.wav` |
+| `verse2` | `verse2_vocals.wav` |
 
-### Code Splitting
+The supplied MP3 examples are reference assets and are **not automatically loaded** by this playback logic. A separately served WAV file is required for the song and section.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Submission
 
-### Analyzing the Bundle Size
+`Submit` becomes enabled when **every** note has a non-empty syllable field; `"-"` counts as an acceptable completed annotation. Pressing it POSTs the full edited note array as JSON. On an HTTP success response, the code attempts to navigate to a `pronunciation_form` URL. The corresponding form and route are **not implemented in the uploaded frontend**.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Input format and backend contract
 
-### Making a Progressive Web App
+The application parses four query parameters:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Parameter | Purpose |
+| --- | --- |
+| `artist_name` | Artist identifier used for the API query and audio directory |
+| `song_name` | Song identifier used for the API query and audio directory |
+| `bpm` | Tempo used for interpreting the note grid and audio timeline |
+| `stanza` | Selected musical section, also controlling the WAV filename |
 
-### Advanced Configuration
+Example:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`http://localhost:3000/?artist_name=example_artist&song_name=example_song&bpm=138&stanza=verse1`
 
-### Deployment
+### Load
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`src/App.js` performs a GET request on initial mount:
 
-### `npm run build` fails to minify
+`GET http://127.0.0.1:5000/api?artist_name=...&song_name=...&bpm=...&stanza=...`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It expects a JSON object containing a `notes` array:
+
+```json
+{
+  "notes": [
+    {
+      "id": 0,
+      "start": 132,
+      "duration": 11,
+      "pitch": 25,
+      "syllable": "SH IY Z"
+    },
+    {
+      "id": 1,
+      "start": 144,
+      "duration": 11,
+      "pitch": 27,
+      "syllable": ""
+    }
+  ]
+}
+```
+
+`start` and `duration` are quantized time-grid positions rather than seconds. The companion Python notebook constructs its grid with **24 steps per beat**, calculated as `(bpm / 60) * 4 * 6` positions per second. Its pitch values are offsets from MIDI note C2. Syllable text uses a sequence of phoneme symbols, such as ARPABET-style vowel and consonant codes.
+
+### Save
+
+`src/components/midi_note.js` sends the edited **array**, rather than a wrapping `{"notes": [...]}` object, to:
+
+`POST http://127.0.0.1:5000/postapi?artist_name=...&song_name=...&bpm=...&stanza=...`
+
+The request uses `Content-Type: application/json`. The backend implementation, storage layer, and the follow-on pronunciation form are not included here. A working integration must supply both API endpoints and permit appropriate cross-origin requests from the frontend.
+
+## Companion Python preparation notebook
+
+[`Syllables_break.ipynb`](Syllables_break.ipynb) explores how to prepare the data for this interface using `pretty_midi`, NumPy, pickle, Matplotlib, and phoneme parsing.
+
+- **`midi_to_list(filename, bpm)`:** loads MIDI notes, orders them by onset and pitch, quantizes onset/end time to a BPM-derived grid, and expresses pitch relative to C2.
+- **`midi_to_grid(filename, bpm)`:** converts notes into a NumPy piano-roll-like array with `1` marking occupied note positions and `2` marking note onsets, for visual inspection.
+- **`syll_to_json(syll_file, section, midi_file, bpm, out_json_filename)`:** loads phonetic lyric data from a pickled section dictionary, removes selected stress digits, separates vowel-bearing portions of phoneme sequences, associates syllables with MIDI note events, and emits the JSON structure consumed by the app.
+
+The notebook uses historical local sample paths and assumes the requisite pickled lyric material and MIDI files are present. It is an exploratory preprocessing notebook, **not** the running API service.
+
+## Code layout
+
+```text
+react_app/
+├── README.md
+├── package.json / package-lock.json
+├── Syllables_break.ipynb       # MIDI + phonetic syllable preprocessing
+├── public/index.html          # React HTML shell
+└── src/
+    ├── App.js                 # URL parameters, API loading, error/loading UI
+    ├── index.js               # Entry point and React Router wrapper
+    ├── components/
+    │   ├── midi_note.js       # Note editor, label movement, audio, submit
+    │   └── AudioControls.jsx  # Play/pause interface
+    ├── lib/
+    │   ├── min_max.js         # Minimum/maximum note pitch
+    │   ├── scalePitch.js      # Visual pitch coordinate
+    │   └── last_syllable.js   # Unused/incomplete experimental helper
+    ├── data/
+    │   ├── verse1.json        # Example note and syllable labels
+    │   ├── verse1.mid         # Example vocal MIDI
+    │   ├── verse1_acc.mp3     # Example accompaniment audio
+    │   └── verse1_vocals.mp3  # Example vocal audio
+    └── App.test.js            # Original scaffold test, not editor tests
+```
+
+Most editor styling lives inline in the note component; a few CSS, SVG, and public assets remain from the Create React App scaffold.
+
+## Running locally
+
+The project is built on **React 17**, **react-router-dom 5**, **react-scripts 4.0.3** (Create React App), and **@use-it/event-listener**.
+
+```bash
+git clone https://github.com/Ambrose-Plante/Music-generative-AI.git
+cd Music-generative-AI/1_Data_Generation/react_app
+npm ci
+npm start
+```
+
+Open `http://localhost:3000` with the required URL parameters.
+
+**Important:** `npm start` only starts the React frontend. A functional editor additionally requires:
+
+1. A local JSON API on **127.0.0.1:5000**, with compatible GET `/api` and POST `/postapi` endpoints.
+2. A WAV static-file server on **127.0.0.1:8887**, with the expected artist/song folders and section filenames.
+
+These services **are not included** in this directory. Without the API, the editor displays a loading or fetch error rather than note data. The bundled demonstration assets do not automatically substitute for the backend.
+
+Other package scripts: `npm run build` creates a production bundle, and `npm test` invokes the scaffold Jest test runner. The existing `App.test.js` still asserts the old “learn react” link and has not been updated to test this editor.
+
+Because the dependency stack is dated, modern Node.js installations may require compatibility updates. The app was reviewed **statically** for this documentation; its build and full browser/backend workflow have not been executed or verified.
+
+## Known limitations
+
+- API and audio addresses are hardcoded to localhost; a separate backend and static audio server must be configured.
+- The editor expects a valid non-empty `notes` list with sequential IDs, and has limited input/schema validation.
+- Drag/drop can encounter boundary-index problems when moving syllable labels near the ends of a sequence.
+- The pitch display and audio-position cursor are approximations rather than a fully calibrated notation/timeline view.
+- `last_syllable.js` contains inconsistent identifiers and is not used by the main editor.
+- The included automated test is leftover Create React App boilerplate.
+- The interface does not perform automatic audio transcription, phoneme recognition, music generation, or vocal synthesis.
+
+Potential improvements include configurable backend URLs, stronger drag/drop invariants and tests, clearer playback synchronization, timeline zoom, error/empty states, and an integrated annotation/export endpoint.
+
+---
+
+This README describes the **currently uploaded code** in `1_Data_Generation/react_app`, distinguishing implemented frontend behavior from the companion Python notebook and external services.
