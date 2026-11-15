@@ -128,7 +128,7 @@ The notebook uses historical local sample paths and assumes the requisite pickle
 ## Code layout
 
 ```text
-react_app/
+phoneme_alignmenment_react_app/
 ├── README.md
 ├── package.json / package-lock.json
 ├── Syllables_break.ipynb       # MIDI + phonetic syllable preprocessing
@@ -159,7 +159,7 @@ The project is built on **React 17**, **react-router-dom 5**, **react-scripts 4.
 
 ```bash
 git clone https://github.com/Ambrose-Plante/Music-generative-AI.git
-cd Music-generative-AI/1_Data_Generation/react_app
+cd Music-generative-AI/1_Data_Generation/phoneme_alignmenment_react_app
 npm ci
 npm start
 ```
