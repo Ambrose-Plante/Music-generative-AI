@@ -1,0 +1,24 @@
+# run_NN_Cmaj_strict_full_step
+
+## Overview
+
+This notebook packages a trained strict-C-major conditional generator into an end-to-end inference workflow. Incoming chord MIDI is grouped into simultaneous note sets, matched to known chord templates or simplified to a bass/root interpretation, and converted into a scale-degree timeline. The requested song section and BPM are encoded and supplied with the chord timeline and random latent input to the loaded generator. Generated vocal probabilities are decoded into discrete note events, while chord and metronome tracks are written in parallel. FluidSynth/pydub-style rendering then produces a listening example, so the notebook functions as an application layer around a trained GAN.
+
+## Algorithmic workflow
+
+1. Parse user chord MIDI
+2. Map chords to strict-C-major array
+3. Encode section/BPM
+4. Generator inference
+5. Vocal decoding
+6. Write/synthesize combined tracks
+
+## Research context
+
+Model-development lineage: baseline MIDI DCGAN → chord conditioning → section and BPM conditioning → dense/auxiliary-loss variants → Transformer, timing, and diffusion experiments.
+
+## Source and reproducibility
+
+- Python export: `run_NN_Cmaj_strict_full_step.py` (available in the prepared import package; upload to this project folder pending)
+
+This documentation is based on static analysis of the historical notebook in the supplied 36-page analytical report, not on execution of the Python export. Original datasets, Colab and Drive paths, checkpoints, sound fonts, credentials, or historical dependencies may be needed to run it.
