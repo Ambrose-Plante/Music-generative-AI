@@ -1,4 +1,3 @@
-# checked
 # mix_vocals_midi
 
 ## Overview
